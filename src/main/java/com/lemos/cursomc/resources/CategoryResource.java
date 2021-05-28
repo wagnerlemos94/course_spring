@@ -20,10 +20,11 @@ public class CategoryResource {
 	private CategoryService categoryService; 
 	
 	@RequestMapping(value = "/{id}",  method = RequestMethod.GET)
-	public ResponseEntity<?> find(@PathVariable Integer id) {		
+	public ResponseEntity<?> find(@PathVariable Integer id){		
 		Category obj = categoryService.buscar(id);
 		return ResponseEntity.ok().body(obj);
 	}
+	
 	
 	@RequestMapping(method = RequestMethod.GET)
 	public ResponseEntity<List<Category>> buscarTodos(){

@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 
 import com.lemos.cursomc.domain.Category;
 import com.lemos.cursomc.repository.CategoryRepository;
+import com.lemos.cursomc.service.exceptions.ObjectNotFoundException;
+
 
 @Service
 public class CategoryService {
@@ -17,7 +19,8 @@ public class CategoryService {
 	
 	public Category buscar(Integer id) {	
 		Optional<Category> obj =  categoryRepository.findById(id);
-		return obj.orElse(null); 
+		return obj.orElseThrow(() -> new ObjectNotFoundException(
+				"Objeto não encontrado !: " + id + ", Tipo: " + Category.class.getName()));
 	}
 	
 	public List<Category> buscarTodos(){
