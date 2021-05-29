@@ -2,8 +2,8 @@ package com.lemos.cursomc.domin.enums;
 
 public enum TypeClient {
 	
-	PHYSICALPERSON(1, "PHYSICAL PERSON"),
-	LEGALPERSON(2, "LEGAL PERSON");
+	PHYSICALPERSON(1, "Pessoa fisica"),
+	LEGALPERSON(2, "Pessoa juridica");
 	
 	private int cod;
 	private String description;
