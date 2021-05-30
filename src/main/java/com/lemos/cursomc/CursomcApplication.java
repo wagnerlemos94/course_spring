@@ -7,35 +7,35 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.lemos.cursomc.domain.Address;
-import com.lemos.cursomc.domain.Category;
-import com.lemos.cursomc.domain.City;
-import com.lemos.cursomc.domain.Client;
-import com.lemos.cursomc.domain.Product;
-import com.lemos.cursomc.domain.State;
-import com.lemos.cursomc.domin.enums.TypeClient;
-import com.lemos.cursomc.repository.AddressRepository;
-import com.lemos.cursomc.repository.CategoryRepository;
-import com.lemos.cursomc.repository.CityRepository;
-import com.lemos.cursomc.repository.ClientRepository;
-import com.lemos.cursomc.repository.ProductRepository;
-import com.lemos.cursomc.repository.StateRepository;
+import com.lemos.cursomc.domain.Endereco;
+import com.lemos.cursomc.domain.Categoria;
+import com.lemos.cursomc.domain.Cidade;
+import com.lemos.cursomc.domain.Cliente;
+import com.lemos.cursomc.domain.Produto;
+import com.lemos.cursomc.domain.Estado;
+import com.lemos.cursomc.domain.enums.TipoCliente;
+import com.lemos.cursomc.repository.EnderecoRepository;
+import com.lemos.cursomc.repository.CategoriaRepository;
+import com.lemos.cursomc.repository.CidadeRepository;
+import com.lemos.cursomc.repository.ClienteRepository;
+import com.lemos.cursomc.repository.ProdutoRepository;
+import com.lemos.cursomc.repository.EstadoRepository;
 
 @SpringBootApplication
 public class CursomcApplication implements CommandLineRunner{
 
 	@Autowired
-	private CategoryRepository categoryRepository;	
+	private CategoriaRepository categoriaRepository;	
 	@Autowired
-	private ProductRepository productRepository;	
+	private ProdutoRepository produtoRepository;	
 	@Autowired 
-	private StateRepository stateRepository;	
+	private EstadoRepository estadoRepository;	
 	@Autowired
-	private CityRepository cityRepository;
+	private CidadeRepository cidadeRepository;
 	@Autowired
-	private ClientRepository clientRepository;
+	private ClienteRepository clienteRepository;
 	@Autowired
-	private AddressRepository addressRepository;
+	private EnderecoRepository enderecoRepository;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(CursomcApplication.class, args);
@@ -43,48 +43,48 @@ public class CursomcApplication implements CommandLineRunner{
 
 	public void run(String... args) throws Exception {
 		
-		Category cat1 = new Category(null, "Informática");
-		Category cat2 = new Category(null, "Escritório");
+		Categoria cat1 = new Categoria(null, "Informática");
+		Categoria cat2 = new Categoria(null, "Escritório");
 		
-		Product p1 = new Product(null, "Computador", 2000.00);
-		Product p2 = new Product(null, "Impressora", 800.00);
-		Product p3 = new Product(null, "Mouse", 80.00);
+		Produto p1 = new Produto(null, "Computador", 2000.00);
+		Produto p2 = new Produto(null, "Impressora", 800.00);
+		Produto p3 = new Produto(null, "Mouse", 80.00);
 		
-		cat1.getProducts().addAll(Arrays.asList(p1, p2, p3));
-		cat2.getProducts().addAll(Arrays.asList(p2));
+		cat1.getProdutos().addAll(Arrays.asList(p1, p2, p3));
+		cat2.getProdutos().addAll(Arrays.asList(p2));
 		
-		p1.getCategories().addAll(Arrays.asList(cat1));
-		p2.getCategories().addAll(Arrays.asList(cat1, cat2));
-		p3.getCategories().addAll(Arrays.asList(cat1));
+		p1.getCategorias().addAll(Arrays.asList(cat1));
+		p2.getCategorias().addAll(Arrays.asList(cat1, cat2));
+		p3.getCategorias().addAll(Arrays.asList(cat1));
 		
 		
-		categoryRepository.saveAll(Arrays.asList(cat1, cat2));
-		productRepository.saveAll(Arrays.asList(p1, p2, p3));
+		categoriaRepository.saveAll(Arrays.asList(cat1, cat2));
+		produtoRepository.saveAll(Arrays.asList(p1, p2, p3));
 		
-		State est1 = new State(null, "Minas Gerais");
-		State est2 = new State(null, "São paulo");
+		Estado est1 = new Estado(null, "Minas Gerais");
+		Estado est2 = new Estado(null, "São paulo");
 		
-		City c1 = new City(null, "Uberlândia", est1);
-		City c2 = new City(null, "São paulo", est2);
-		City c3 = new City(null, "Campinas", est2);
+		Cidade c1 = new Cidade(null, "Uberlândia", est1);
+		Cidade c2 = new Cidade(null, "São paulo", est2);
+		Cidade c3 = new Cidade(null, "Campinas", est2);
 		
-		est1.getCities().addAll(Arrays.asList(c1));
-		est2.getCities().addAll(Arrays.asList(c2,c3));
+		est1.getCidades().addAll(Arrays.asList(c1));
+		est2.getCidades().addAll(Arrays.asList(c2,c3));
 		
-		stateRepository.saveAll(Arrays.asList(est1, est2));
-		cityRepository.saveAll(Arrays.asList(c1,c2,c3));
+		estadoRepository.saveAll(Arrays.asList(est1, est2));
+		cidadeRepository.saveAll(Arrays.asList(c1,c2,c3));
 		
-		Client cli1 = new Client(null, "Maria Silva", "maria@gmail.com", "36378912377", TypeClient.PHYSICALPERSON);
+		Cliente cli1 = new Cliente(null, "Maria Silva", "maria@gmail.com", "36378912377", TipoCliente.PESSOAFISICA);
 		
-		cli1.getPhones().addAll(Arrays.asList("27363323", "93838393"));
+		cli1.getTelefones().addAll(Arrays.asList("27363323", "93838393"));
 		
-		Address e1 = new Address(null, "Rua Floeres", "300", "Apto 303", "Jardim", "38220834", cli1, c1);
-		Address e2 = new Address(null, "Avenida Matos", "105", "Sala 800", "Jardim", "38777012", cli1, c2);
+		Endereco e1 = new Endereco(null, "Rua Floeres", "300", "Apto 303", "Jardim", "38220834", cli1, c1);
+		Endereco e2 = new Endereco(null, "Avenida Matos", "105", "Sala 800", "Jardim", "38777012", cli1, c2);
 		
-		cli1.getAdresses().addAll(Arrays.asList(e1, e2));
+		cli1.getEnderecos().addAll(Arrays.asList(e1, e2));
 		
-		clientRepository.save(cli1);
-		addressRepository.saveAll(Arrays.asList(e1, e2));
+		clienteRepository.save(cli1);
+		enderecoRepository.saveAll(Arrays.asList(e1, e2));
 		
 		
 	}

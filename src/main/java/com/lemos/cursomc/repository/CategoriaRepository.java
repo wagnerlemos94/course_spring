@@ -3,9 +3,9 @@ package com.lemos.cursomc.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.lemos.cursomc.domain.Category;
+import com.lemos.cursomc.domain.Categoria;
 
 @Repository
-public interface CategoryRepository extends JpaRepository<Category, Integer>{
+public interface CategoriaRepository extends JpaRepository<Categoria, Integer>{
 
 }

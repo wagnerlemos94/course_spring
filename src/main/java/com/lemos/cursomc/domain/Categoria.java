@@ -14,25 +14,25 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 
 @Entity
-public class Category implements Serializable{
+public class Categoria implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	private String name;
+	private String nome;
 	
 	@JsonManagedReference
-	@ManyToMany(mappedBy = "categories")
-	private List<Product> products = new ArrayList<Product>(); 
+	@ManyToMany(mappedBy = "categorias")
+	private List<Produto> produtos = new ArrayList<Produto>(); 
 	
-	public Category() {
+	public Categoria() {
 		
 	}
 	
-	public Category(Integer id, String name) {
+	public Categoria(Integer id, String nome) {
 		this.id = id;
-		this.name = name;
+		this.nome = nome;
 	}
 	
 	public Integer getId() {
@@ -43,20 +43,20 @@ public class Category implements Serializable{
 		this.id = id;
 	}
 	
-	public String getName() {
-		return name;
+	public String getNome() {
+		return nome;
 	}
 	
-	public void setName(String name) {
-		this.name = name;
+	public void setName(String nome) {
+		this.nome = nome;
 	}
 	
-	public List<Product> getProducts() {
-		return products;
+	public List<Produto> getProdutos() {
+		return produtos;
 	}
 
-	public void setProducts(List<Product> products) {
-		this.products = products;
+	public void setProducts(List<Produto> produtos) {
+		this.produtos = produtos;
 	}
 
 	@Override
@@ -75,7 +75,7 @@ public class Category implements Serializable{
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Category other = (Category) obj;
+		Categoria other = (Categoria) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;

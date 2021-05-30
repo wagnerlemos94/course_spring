@@ -12,28 +12,28 @@ import javax.persistence.ManyToOne;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
-public class City implements Serializable{
+public class Cidade implements Serializable{
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	private String name;
+	private String nome;
 	
 	@JsonManagedReference
 	@ManyToOne
-	@JoinColumn(name = "state_id")
-	private State state;
+	@JoinColumn(name = "estado_id")
+	private Estado estado;
 	
-	public City() {
+	public Cidade() {
 		
 	}
 	
-	public City(Integer id, String name, State state) {
+	public Cidade(Integer id, String nome, Estado estado) {
 		super();
 		this.id = id;
-		this.name = name;
-		this.state = state;
+		this.nome = nome;
+		this.estado = estado;
 	}
 
 	public Integer getId() {
@@ -44,20 +44,20 @@ public class City implements Serializable{
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
+	public String getNome() {
+		return nome;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
-	public State getState() {
-		return state;
+	public Estado getEstado() {
+		return estado;
 	}
 
-	public void setState(State state) {
-		this.state = state;
+	public void setEstado(Estado estado) {
+		this.estado = estado;
 	}
 
 	@Override
@@ -76,7 +76,7 @@ public class City implements Serializable{
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		City other = (City) obj;
+		Cidade other = (Cidade) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;

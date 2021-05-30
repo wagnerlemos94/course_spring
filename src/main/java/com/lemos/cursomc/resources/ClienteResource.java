@@ -1,7 +1,5 @@
 package com.lemos.cursomc.resources;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -9,27 +7,27 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.lemos.cursomc.domain.Category;
-import com.lemos.cursomc.service.CategoryService;
+import com.lemos.cursomc.domain.Cliente;
+import com.lemos.cursomc.service.ClientService;
 
 @RestController
-@RequestMapping(value = "/categorias")
-public class CategoryResource {
+@RequestMapping(value = "/clientes")
+public class ClienteResource {
 	
 	@Autowired
-	private CategoryService categoryService; 
+	private ClientService clientService; 
 	
 	@RequestMapping(value = "/{id}",  method = RequestMethod.GET)
 	public ResponseEntity<?> find(@PathVariable Integer id){		
-		Category obj = categoryService.buscar(id);
+		Cliente obj = clientService.buscar(id);
 		return ResponseEntity.ok().body(obj);
 	}
 	
 	
-	@RequestMapping(method = RequestMethod.GET)
-	public ResponseEntity<List<Category>> buscarTodos(){
-		List<Category> lista = categoryService.buscarTodos();
-		return ResponseEntity.ok().body(lista);
-	}
+//	@RequestMapping(method = RequestMethod.GET)
+//	public ResponseEntity<List<Client>> buscarTodos(){
+//		List<Client> lista = clientService.buscarTodos();
+//		return ResponseEntity.ok().body(lista);
+//	}
 
 }

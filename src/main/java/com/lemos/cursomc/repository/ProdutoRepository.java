@@ -3,9 +3,9 @@ package com.lemos.cursomc.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.lemos.cursomc.domain.Client;
+import com.lemos.cursomc.domain.Produto;
 
 @Repository
-public interface ClientRepository extends JpaRepository<Client, Integer>{
+public interface ProdutoRepository extends JpaRepository<Produto, Integer>{
 
 }
