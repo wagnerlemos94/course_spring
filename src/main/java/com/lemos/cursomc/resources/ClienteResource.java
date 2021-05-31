@@ -3,6 +3,7 @@ package com.lemos.cursomc.resources;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,11 +16,17 @@ import com.lemos.cursomc.service.ClienteService;
 public class ClienteResource {
 	
 	@Autowired
-	private ClienteService clientService; 
+	private ClienteService clienteService; 
+	
+	@RequestMapping(value="/cadastro",method = RequestMethod.POST)
+	public ResponseEntity<Void> cadastro(@RequestBody Cliente cliente){
+		clienteService.cadastro(cliente);
+		return ResponseEntity.ok().build();
+	}
 	
 	@RequestMapping(value = "/{id}",  method = RequestMethod.GET)
 	public ResponseEntity<?> find(@PathVariable Integer id){		
-		Cliente obj = clientService.buscar(id);
+		Cliente obj = clienteService.buscar(id);
 		return ResponseEntity.ok().body(obj);
 	}
 	

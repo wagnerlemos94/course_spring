@@ -14,13 +14,17 @@ import com.lemos.cursomc.service.exceptions.ObjectNotFoundException;
 public class ClienteService {
 	
 	@Autowired
-	private ClienteRepository clientRepository;
+	private ClienteRepository clienteRepository;
 	
 	public Cliente buscar(Integer id) {
 		
-		Optional<Cliente> obj =  clientRepository.findById(id);
+		Optional<Cliente> obj =  clienteRepository.findById(id);
 		return obj.orElseThrow(() -> new ObjectNotFoundException(
 				"Objeto não encontrado !: " + id + ", Tipo: " + Categoria.class.getName()));
+	}
+	
+	public void cadastro(Cliente cliente) {
+		clienteRepository.save(cliente);
 	}
 
 }
