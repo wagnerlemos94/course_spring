@@ -25,10 +25,6 @@ public class CategoryService {
 				"Objeto não encontrado !: " + id + ", Tipo: " + Categoria.class.getName()));
 	}
 	
-	public List<Categoria> findAll(){
-		List<Categoria> lista =  repo.findAll();
-		return lista;
-	}
 	public Categoria insert(Categoria obj) {
 		obj.setId(null);
 		return repo.save(obj);
@@ -46,6 +42,10 @@ public class CategoryService {
 		}catch(DataIntegrityViolationException e) {
 			throw new DataIntegrityException("NÃO E POSSÍVEL EXCLUIR UMA CATEGORIA QUE POSSUI PRODUTOS");
 		}
+	}
+	
+	public List<Categoria> findAll(){
+		return repo.findAll();
 	}
 	
 
