@@ -15,17 +15,21 @@ import com.lemos.cursomc.service.exceptions.ObjectNotFoundException;
 public class CategoryService {
 	
 	@Autowired
-	private CategoriaRepository categoryRepository;
+	private CategoriaRepository repo;
 	
 	public Categoria buscar(Integer id) {	
-		Optional<Categoria> obj =  categoryRepository.findById(id);
+		Optional<Categoria> obj =  repo.findById(id);
 		return obj.orElseThrow(() -> new ObjectNotFoundException(
 				"Objeto não encontrado !: " + id + ", Tipo: " + Categoria.class.getName()));
 	}
 	
 	public List<Categoria> buscarTodos(){
-		List<Categoria> lista =  categoryRepository.findAll();
+		List<Categoria> lista =  repo.findAll();
 		return lista;
+	}
+	public Categoria insert(Categoria obj) {
+		obj.setId(null);
+		return repo.save(obj);
 	}
 	
 
