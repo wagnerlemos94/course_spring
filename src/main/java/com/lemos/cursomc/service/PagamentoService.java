@@ -15,7 +15,7 @@ public class PagamentoService {
 	@Autowired
 	private PagamentoRepository pagamentoRepository;
 	
-	public Pagamento buscar(Integer id) {
+	public Pagamento find(Integer id) {
 		Optional<Pagamento> obj = pagamentoRepository.findById(id);
 		return obj.orElseThrow(() -> new ObjectNotFoundException(
 				"Objeto não encontrado !: " + id + ", Tipo: " + Pagamento.class.getName()));

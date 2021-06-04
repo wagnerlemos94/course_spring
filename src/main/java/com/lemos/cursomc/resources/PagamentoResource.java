@@ -19,7 +19,7 @@ public class PagamentoResource {
 	
 	@RequestMapping(value="/{id}", method = RequestMethod.GET)
 	public ResponseEntity<Pagamento> buscar(@PathVariable Integer id){
-		Pagamento obj = pagamentoService.buscar(id);
+		Pagamento obj = pagamentoService.find(id);
 		return ResponseEntity.ok().body(obj);
 	}
 	
