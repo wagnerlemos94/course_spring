@@ -2,11 +2,18 @@ package com.lemos.cursomc.domain.dto;
 
 import java.io.Serializable;
 
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
+
 import com.lemos.cursomc.domain.Categoria;
 
 public class CategoriaDTO implements Serializable{
 	private static final long serialVersionUID = 1L;
+	
 	private Integer id;
+	
+	@Size(min=5, max=80, message="O tamanho deve ser entre 5 e 80 caracteres")
+	@NotEmpty(message = "Preenchimento obrigatório")
 	private String nome;
 	
 	public CategoriaDTO() {
