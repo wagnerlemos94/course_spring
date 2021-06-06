@@ -20,7 +20,7 @@ public abstract class Pagamento implements Serializable{
 	
 	@Id
 	private Integer id;
-	private Integer estadoPagamento;
+	private Integer estado;
 	
 	@JsonIgnore
 	@OneToOne
@@ -32,10 +32,10 @@ public abstract class Pagamento implements Serializable{
 		
 	}
 
-	public Pagamento(Integer id, EstadoPagamento estadoPagamento, Pedido pedido) {
+	public Pagamento(Integer id, EstadoPagamento estado, Pedido pedido) {
 		super();
 		this.id = id;
-		this.estadoPagamento = estadoPagamento.getCod();
+		this.estado = (estado==null)? null : estado.getCod();
 		this.pedido = pedido;
 	}
 
@@ -47,12 +47,12 @@ public abstract class Pagamento implements Serializable{
 		this.id = id;
 	}
 
-	public EstadoPagamento getEstadoPagamento() {
-		return EstadoPagamento.toEnum(estadoPagamento);
+	public EstadoPagamento getEstado() {
+		return EstadoPagamento.toEnum(estado);
 	}
 
-	public void setEstadoPagamento(EstadoPagamento estadoPagamento) {
-		this.estadoPagamento = estadoPagamento.getCod();
+	public void setEstado(EstadoPagamento estado) {
+		this.estado = estado.getCod();
 	}
 
 	public Pedido getPedido() {

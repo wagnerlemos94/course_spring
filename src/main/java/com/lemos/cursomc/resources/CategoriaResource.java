@@ -19,14 +19,14 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.lemos.cursomc.domain.Categoria;
 import com.lemos.cursomc.domain.dto.CategoriaDTO;
-import com.lemos.cursomc.service.CategoryService;
+import com.lemos.cursomc.service.CategoriaService;
 
 @RestController
 @RequestMapping(value = "/categorias")
 public class CategoriaResource {
 	
 	@Autowired
-	private CategoryService service; 
+	private CategoriaService service; 
 	
 	@RequestMapping(value = "/{id}",  method = RequestMethod.GET)
 	public ResponseEntity<Categoria> find(@PathVariable Integer id){		
